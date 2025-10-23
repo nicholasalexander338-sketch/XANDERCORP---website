@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>XANDERCORP — Empowering Ideas, Building the Future</title>
+  <meta name="description" content="XANDERCORP — Empowering Ideas, Building the Future. Pitch your idea or get in touch." />
+  <link rel="icon" href="/logo.png" type="image/png" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="site-bg">
+  <!-- NAV -->
+  <header class="nav">
+    <div class="nav-inner">
+      <img src="/logo.png" alt="XANDERCORP logo" class="nav-logo" />
+      <nav class="nav-links">
+        <a href="#pitch">Pitch</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main>
+    <section id="hero" class="hero">
+      <div class="hero-center">
+        <img src="/logo.png" alt="XANDERCORP logo" class="hero-logo" id="heroLogo" />
+        <p class="tagline">Empowering Ideas, Building the Future</p>
+      </div>
+    </section>
+
+    <!-- PITCH -->
+    <section id="pitch" class="section container">
+      <h2 class="section-title">Pitch Your Innovation</h2>
+      <p class="section-sub">Got a bold idea? Share the essentials — we review submissions and reach out where there's fit.</p>
+
+      <form id="pitchForm" class="form card">
+        <div class="form-row">
+          <input name="name" type="text" placeholder="Your name" required />
+          <input name="email" type="email" placeholder="Your email" required />
+        </div>
+
+        <input name="ideaTitle" type="text" placeholder="Idea title" required />
+        <textarea name="description" rows="5" placeholder="Short description of the idea" required></textarea>
+
+        <button type="submit" class="btn-ghost">Submit Pitch</button>
+        <p id="pitchFeedback" class="feedback hidden">Thanks — your pitch has been recorded.</p>
+      </form>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section container">
+      <h2 class="section-title">Contact</h2>
+      <p class="section-sub">General inquiries, partnerships, or just to say hello.</p>
+
+      <form id="contactForm" class="form card">
+        <div class="form-row">
+          <input name="name" type="text" placeholder="Your name" required />
+          <input name="email" type="email" placeholder="Your email" required />
+        </div>
+
+        <textarea name="message" rows="4" placeholder="Your message" required></textarea>
+
+        <button type="submit" class="btn-ghost">Send Message</button>
+        <p id="contactFeedback" class="feedback hidden">Thanks — we’ll be in touch.</p>
+      </form>
+
+      <div class="contact-meta">
+        <p>Email: <a href="mailto:nicholasalexander338@gmail.com">nicholasalexander338@gmail.com</a></p>
+        <p>Follow: <a href="#" aria-label="LinkedIn">LinkedIn</a> • <a href="#" aria-label="Instagram">Instagram</a></p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div>© <span id="year"></span> XANDERCORP — Empowering Ideas, Building the Future</div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
