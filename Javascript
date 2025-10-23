@@ -1,0 +1,67 @@
+// script.js — client form handlers for Pitch + Contact
+// Replace WEB_APP_URL with your deployed Apps Script Web App URL from the next step.
+const WEB_APP_URL = 'YOUR_WEB_APP_URL_HERE'; // <-- paste your Web App URL here
+
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// Utility: show feedback
+function showFeedback(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.classList.remove('hidden');
+  setTimeout(() => el.classList.add('hidden'), 6500);
+}
+
+// Generic sender used for both forms
+async function sendToSheet(payload) {
+  try {
+    // Use no-cors mode to avoid CORS blocking from Apps Script
+    await fetch(WEB_APP_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    // We cannot rely on response due to no-cors; assume success
+    return true;
+  } catch (err) {
+    // network error — show nothing loudly (silent storage requested)
+    console.warn('submission error', err);
+    return false;
+  }
+}
+
+// Pitch form
+const pitchForm = document.getElementById('pitchForm');
+if (pitchForm) {
+  pitchForm.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    const fd = new FormData(pitchForm);
+    const payload = {
+      name: fd.get('name') || '',
+      email: fd.get('email') || '',
+      ideaTitle: fd.get('ideaTitle') || '',
+      description: fd.get('description') || ''
+    };
+    await sendToSheet(payload);
+    pitchForm.reset();
+    showFeedback('pitchFeedback');
+  });
+}
+
+// Contact form
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+  contactForm.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    const fd = new FormData(contactForm);
+    const payload = {
+      name: fd.get('name') || '',
+      email: fd.get('email') || '',
+      message: fd.get('message') || ''
+    };
+    await sendToSheet(payload);
+    contactForm.reset();
+    showFeedback('contactFeedback');
+  });
+}
